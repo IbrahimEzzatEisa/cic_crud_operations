@@ -1,0 +1,100 @@
+
+
+<section class="bg-white dark:bg-gray-900">
+    <!-------------------------- header --------------------------->
+    <header class="absolute inset-x-0 top-0 z-50">
+      <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+        <div class="flex lg:flex-1">
+          <a href="#" class="-m-1.5 p-1.5">
+            <span class="sr-only">Your Company</span>
+          </a>
+        </div>
+        <div class="flex lg:hidden">
+          <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700" >
+            <span class="sr-only">Open main menu</span>
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+          </button>
+        </div>
+      <!----------------------------------- logout -------------------------------------->
+      <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+        <a (click)="empolyee_list()" class="text-sm font-semibold leading-6 text-gray-900 mr-5 ml-5"> Employees list <span >&rarr;</span></a>
+        <a (click)="logOut()" class="text-sm font-semibold leading-6 text-gray-900">Log out <span >&rarr;</span></a>
+      </div>
+      </nav>
+    </header>
+
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6  justify-center">
+      <div class="mx-auto max-w-screen-sm  mb-8 lg:mb-16">
+          <h5 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">update Employee</h5>
+      </div>
+
+
+
+      <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-1  justify-center">
+        <form #form="ngForm" (ngSubmit)="onSubmit_edit()">
+          <div class="grid gap-4 mb-4 sm:grid-cols-1 ">
+            <div class="sm:col-span-2">
+              <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+              <input type="text" id="name" ngModel required #name="ngModel" [(ngModel)]="employee_Obj.name" name="name"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                placeholder="Enter your name" [ngClass]="{'bg-red-50 border border-red-500': name?.errors && form.submitted }">
+              <div *ngIf="name?.errors?.required && form.submitted" class="invalid-feedback">
+                <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span> username is
+                  required</p>
+              </div>
+
+            </div>
+            <div div class="sm:col-span-2">
+              <label for="age" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">age</label>
+              <input type="text" id="age" ngModel required #age="ngModel" [(ngModel)]="employee_Obj.age" name="age"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                placeholder="Enter your age" [ngClass]="{'bg-red-50 border border-red-500': age?.errors && form.submitted }">
+              <div *ngIf="age?.errors?.required && form.submitted" class="invalid-feedback">
+                <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span> age is required
+                </p>
+              </div>
+            </div>
+            <div div class="sm:col-span-2">
+              <label for="birthOfDate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">birthOfDate</label>
+              <input type="date" ngModel required #birthOfDate="ngModel" [(ngModel)]="employee_Obj.birthOfDate"
+                name="birthOfDate" id="birthOfDate"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                placeholder="Enter your birthDate"
+                [ngClass]="{'bg-red-50 border border-red-500': birthOfDate?.errors && form.submitted }">
+              <div *ngIf="birthOfDate?.errors?.required && form.submitted" class="invalid-feedback">
+                <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span> birth Date is
+                  required</p>
+              </div>
+            </div>
+
+            <div class="sm:col-span-2">
+              <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">address</label>
+              <textarea id="address" rows="5" ngModel required #address="ngModel" [(ngModel)]="employee_Obj.address"
+                name="address"
+                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                placeholder="Enter your address"
+                [ngClass]="{'bg-red-50 border border-red-500': address?.errors && form.submitted }"></textarea>
+              <div *ngIf="address?.errors?.required && form.submitted" class="invalid-feedback">
+                <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span> address Date is
+                  required</p>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center text-center">
+            <button type="submit"
+              class="text-white w-100 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+              save
+            </button>
+
+
+
+          </div>
+        </form>
+
+
+
+      </div>
+  </div>
+</section>
